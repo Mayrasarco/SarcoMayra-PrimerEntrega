@@ -1,0 +1,17 @@
+
+h2{
+    font-size: 2rem;
+}
+
+
+.button{
+    font-size: 30px;
+    float: right;
+    line-height: 80px;
+    margin-right: 40px;
+    cursor: pointer;
+    display: none;
+}
+
+
+
