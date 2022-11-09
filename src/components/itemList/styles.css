@@ -1,0 +1,12 @@
+.cards-products{
+
+    display: flex;
+    width: 330px;
+    border: 1px;
+    height: 340px;
+    padding: 20px;
+  justify-content: space-around;
+    margin: -20px;
+    position:relative;
+    text-align: center;
+}

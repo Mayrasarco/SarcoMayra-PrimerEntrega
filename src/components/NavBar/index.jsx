@@ -1,5 +1,5 @@
 import React from "react";
-import React from 'react';
+
 import CardWidget from "../CardWidget";
 import './styles.css';
 

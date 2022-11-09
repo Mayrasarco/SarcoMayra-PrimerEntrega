@@ -1,11 +1,14 @@
 import React from 'react'
 import Item from '../Item'
+import './styles.css';
 
 const ItemList = ({products}) => {
   return (
-    products.map(product => {
-        return <Item product={product}/>
-    })  
+    <div className= "cards-product">
+    {products.map(product => {
+        return <Item key={product.id}product={product}/>
+    }) }
+    </div>
 )
   
 }
