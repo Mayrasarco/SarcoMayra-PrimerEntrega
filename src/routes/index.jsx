@@ -1,7 +1,7 @@
 import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Root from "../components/root";
-import ItemDetailContainer from "../components/ItemListContainer";
+import ItemDetailContainer from "../container/ItemDetailContainer";
 import ItemListContainer from "../components/ItemListContainer";
 
 

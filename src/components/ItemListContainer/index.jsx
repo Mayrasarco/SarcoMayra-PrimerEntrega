@@ -5,6 +5,8 @@ import { useEffect, useState } from "react";
 import ItemList from "../itemList";
 import { useParams } from 'react-router-dom';
 import { PropagateLoader } from 'react-spinners';
+import Ad from '../Ad';
+
 
 
 
@@ -16,9 +18,15 @@ export default function ItemListContainer ({greeting}){
 
     const [products, setProducts] =useState([]);
 
+    const [adView, setAdView] = useState (true);
+
     const {categoryId} = useParams();
 
     console.log(categoryId);
+
+    const handClose= (evento) =>{
+     setAdView (false);
+    }
 
     useEffect(() => {
 
@@ -50,7 +58,16 @@ export default function ItemListContainer ({greeting}){
        
 
    {products.length? <ItemList products={products}/>: <PropagateLoader/> }
-        </>
-    )
+        
     
+
+    {adView ? (
+    <Ad>
+        <h1>Este es un anuncio de cookies</h1>
+        <button onClick ={handClose}>Cerrar</button>
+    </Ad> 
+    ) : null
     }
+    </>
+   );
+}

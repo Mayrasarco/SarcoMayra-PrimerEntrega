@@ -1,0 +1,13 @@
+.cards-products{
+
+    display: flex;
+    width: 100%;
+    border: 1px;
+    height:auto;
+    
+    padding: 3px;
+
+    margin: 3px;
+    flex-direction: column;
+    text-align: center;
+}
