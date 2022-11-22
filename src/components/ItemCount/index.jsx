@@ -4,7 +4,7 @@ import './styles.css';
 
 const ItemCount = ({onAdd, stock,initial}) => {
 
-    const [count, setCount] = useState (initial);
+    const [count, setCount] = useState(initial);
 
     const onPlus = ()=> {
         if (count < stock) setCount (count +1)

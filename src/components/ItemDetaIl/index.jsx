@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import './styles.css';
 import ItemCount from '../ItemCount';
-import InputconError from '../ItemCount';
+import InputconError from '../InputConError';
 import { useContext } from 'react';
 import { Shop } from '../../contexts/Shop';
 
@@ -10,9 +10,9 @@ const ItemDetail = ({productsDetail}) => {
   const {addProduct} = useContext(Shop);
   const[quantityItemDetail, setQuantityItemDetail] = useState(0);
 
-  const confirm = (quantity)=>{
+  const confirmPurchase = (quantity)=> {
     addProduct ({...productsDetail, quantity})
-    setQuantityItemDetail (quantity);
+    setQuantityItemDetail(quantity);
   };
   return (
     <div>
@@ -21,11 +21,12 @@ const ItemDetail = ({productsDetail}) => {
       <button className='boton' > Agregar</button>
       <InputconError/>
       {quantityItemDetail ?
-      <button> Go card</button>
+      <button>Go card</button>
       :
-      <ItemCount onAdd={confirm} initial={1} stock={20} />
+      <ItemCount onAdd={confirmPurchase} initial={1} stock={20} />
      }
     </div>
+    
   );
 };
 

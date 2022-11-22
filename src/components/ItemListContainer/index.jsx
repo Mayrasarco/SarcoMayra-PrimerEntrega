@@ -9,10 +9,6 @@ import Ad from '../Ad';
 
 
 
-
-
-
-
 export default function ItemListContainer ({greeting}){
 
 
@@ -20,14 +16,13 @@ export default function ItemListContainer ({greeting}){
 
     const [adView, setAdView] = useState (true);
 
-    const {categoryId} = useParams();
+    const { categoryId}  = useParams();
 
     console.log(categoryId);
 
     const handClose= (evento) =>{
-     setAdView (false);
-    }
-
+     setAdView(false);
+    };
     useEffect(() => {
 
    

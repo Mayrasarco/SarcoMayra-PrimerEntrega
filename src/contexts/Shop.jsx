@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { createContext } from "react";
-import React from "react";
+import Reac from "react";
 
 
 export const Shop = createContext ({});
 
 
-const ShopProvider = ({children}) => {
+const ShopProvider = ({ children }) => {
 
     const [products, setProducts] = useState([]);
 

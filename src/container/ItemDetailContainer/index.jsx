@@ -7,7 +7,7 @@ import { PropagateLoader } from 'react-spinners';
 const ItemDetailContainer = () => {
 
   const {id} = useParams ()
-  const [productsDetail, setproductsDetail] = useState (null)
+  const [productsDetail, setproductsDetail] = useState(null)
     useEffect(() => {
       const getProductsDetail = async () =>{
         const response = await fetch( `https://fakestoreapi.com/products/${id}`);

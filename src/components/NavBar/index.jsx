@@ -9,9 +9,9 @@ const NavBar = () => {
 
     
 
-    const [themeColor, setThemeColor] = useContext(Theme);
+    const {themeColor, setThemeColor} = useContext(Theme);
 
-    const handleChange = (event)=>{
+    const handleChange = (event)=> {
         setThemeColor(event.target.value)
     }
     return (
