@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import { useNavigate } from 'react-router-dom';
 import './styles.css';
 import ItemCount from '../ItemCount';
 import InputconError from '../InputConError';
@@ -10,10 +11,17 @@ const ItemDetail = ({productsDetail}) => {
   const {addProduct} = useContext(Shop);
   const[quantityItemDetail, setQuantityItemDetail] = useState(0);
 
+  const navigate = useNavigate();
+
   const confirmPurchase = (quantity)=> {
     addProduct ({...productsDetail, quantity})
     setQuantityItemDetail(quantity);
   };
+
+  const handleNavigate = () =>
+  {
+    navigate ('/cart')
+  }
   return (
     <div>
       <img src={productsDetail.image}/>
@@ -21,7 +29,7 @@ const ItemDetail = ({productsDetail}) => {
       <button className='boton' > Agregar</button>
       <InputconError/>
       {quantityItemDetail ?
-      <button>Go card</button>
+      <button onClick= {handleNavigate}>Go card</button>
       :
       <ItemCount onAdd={confirmPurchase} initial={1} stock={20} />
      }
