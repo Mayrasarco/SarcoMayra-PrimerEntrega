@@ -1,10 +1,25 @@
-import React from 'react'
+import React from 'react';
+import { useContext } from 'react';
+import { Shop } from '../../contexts/Shop';
+import TrashCanIcon from '../TrashCanIcon';
 
 const CardItem = ({item}) => {
+
+  const {removeProduct} = useContext(Shop);
+
+  const handleRemove = () => {
+    removeProduct(item.id);
+
+  }
   return (
-    <div>
+    <div style= {{display:'flex', flexdirection: 'row', justifycontent:'center'}}>
         <img src= {item.image}  widht={200} alt='card'></img>
-<h1>{item.name}</h1>
+        <h1>{item.name}</h1>
+        <p>{item.quantity}</p>
+        <div style = {{widht: 25}}>
+        <TrashCanIcon />
+        </div>
+       
     </div>
   )
 }

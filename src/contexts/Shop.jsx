@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { createContext } from "react";
-import Reac from "react";
+import React from "react";
 
 
 export const Shop = createContext ({});
@@ -15,7 +15,11 @@ const ShopProvider = ({ children }) => {
             console.log(productToAdd);
             const flagRepeated = isProductRepeated(productToAdd.id)
             if (flagRepeated) {
-                
+             const productoRepetidoModificado= products.find((productInCart) => productInCart.id === productToAdd.id)
+              productoRepetidoModificado.quantity += productToAdd.quantity;
+
+             const productosCartSinRepetido= products.filter((productsInCart) => productsInCart.id !== productToAdd.id)
+             setProducts([... productosCartSinRepetido, productoRepetidoModificado])
             } else {
                 setProducts([...products, productToAdd])
             }
@@ -23,10 +27,31 @@ const ShopProvider = ({ children }) => {
     
      
     const isProductRepeated = (id) => {
-        return products.some(product => product.id === id);
+        return products.some((product) => product.id === id);
+
     }
 
-    return <Shop.Provider value={{products, addProduct}}>
+    const removeProduct = (id) => {
+       const productosCart = products.filter (productsInCart => productsInCart.id !== id)
+       setProducts (productosCart);
+    }
+
+    const emptyCart = () =>{
+        setProducts ([]);
+    }
+
+    const calcularTotal = ()=>{
+        const total = products.reduce((acc, productoActual) => acc += productoActual.quantity * productoActual.price,0);
+        return total;
+    }
+
+    const totalItemsCart = () =>{
+        let total= 0;
+        products.forEach ((product )=> total += product.quantity)
+        return total;
+    }
+
+    return <Shop.Provider value={{products, addProduct, removeProduct, emptyCart, calcularTotal, totalItemsCart}}>
         {children}
         </Shop.Provider>
     }

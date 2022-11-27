@@ -16,7 +16,7 @@ export default function ItemListContainer ({greeting}){
 
     const [products, setProducts] =useState([]);
 
-    const [adView, setAdView] = useState (true);
+    const [adView, setAdView] = useState (false);
 
     const { categoryId}  = useParams();
 
@@ -30,34 +30,42 @@ export default function ItemListContainer ({greeting}){
    
         (async() =>{
             try{
-                let response;
-                if (categoryId){
+                /*let response;*/
+              /*  if (categoryId){
              response = await fetch (`https://fakestoreapi.com/products/?categories=${categoryId}`);
             }else{
             response = await fetch (`https://fakestoreapi.com/products`);
-            }
+            }*/
 
-            
+  let q;
+  if(categoryId){
+ q = query(collection(db, "products"), where ('category', '===', categoryId))
+  }else {
+    q = query(collection(db, "products"));
+};
 
-const q = query(collection(db, "products"));
+
+ 
 
 const querySnapshot = await getDocs(q);
+const productosFireBase = [];
 querySnapshot.forEach((doc) => {
   // doc.data() is never undefined for query doc snapshots
   console.log(doc.id, " => ", doc.data());
+  productosFireBase.push({...doc.data(),id: doc.id})
 });
-            const data= await response.json();
-            console.log(data);
-            if (data) setProducts(data);
+  setProducts(productosFireBase);
+
+            /*const data= await response.json();*/
+           /* console.log(data);*/
+            
         
     } catch (error) {
         console.log(error);
     }
       
       })()
-    }, [categoryId])
-
-   
+    }, [categoryId]);
 
    
    return(

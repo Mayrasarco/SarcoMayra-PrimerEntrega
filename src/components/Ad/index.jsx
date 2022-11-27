@@ -23,7 +23,7 @@ const Ad = ({children}) => {
             padding: 50,
             width: 900,
             height: 500,
-            backgroundColor: 'salmon',
+            backgroundColor: 'blue',
           }}
         >
           {children}
