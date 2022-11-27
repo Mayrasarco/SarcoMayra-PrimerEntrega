@@ -1,13 +1,15 @@
 
 import './styles.css';
 //import rawProducts from '../data/products'
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import ItemList from "../itemList";
 import { useParams } from 'react-router-dom';
-import { PropagateLoader } from 'react-spinners';
+import Loader from '../Loader';
 import Ad from '../Ad';
 import { collection, query, where, getDocs } from "firebase/firestore";
 import { db } from '../../firebase/config';
+import saveProductsFirebase from '../../Services/SaveProductsFirebase';
+import { capitalizeFirstLetter } from '../../Utils/index';
 
 
 
@@ -15,6 +17,7 @@ export default function ItemListContainer ({greeting}){
 
 
     const [products, setProducts] =useState([]);
+    const [loading, setLoading] = useState(false);
 
     const [adView, setAdView] = useState (false);
 
@@ -25,11 +28,13 @@ export default function ItemListContainer ({greeting}){
     const handClose= (evento) =>{
      setAdView(false);
     };
+
     useEffect(() => {
 
    
         (async() =>{
             try{
+              setLoading(true);
                 /*let response;*/
               /*  if (categoryId){
              response = await fetch (`https://fakestoreapi.com/products/?categories=${categoryId}`);
@@ -39,7 +44,8 @@ export default function ItemListContainer ({greeting}){
 
   let q;
   if(categoryId){
- q = query(collection(db, "products"), where ('category', '===', categoryId))
+    const categoryCapitalized = capitalizeFirstLetter(categoryId);
+ q = query(collection(db, "products"), where ('category', '===', categoryCapitalized))
   }else {
     q = query(collection(db, "products"));
 };
@@ -67,12 +73,19 @@ querySnapshot.forEach((doc) => {
       })()
     }, [categoryId]);
 
+    const handleAddProducts = async () => {
+      await saveProductsFirebase()
+  };
    
    return(
     <>
        
 
-   {products.length? <ItemList products={products}/>: <PropagateLoader/> }
+   {products.length && !loading ?
+   <ItemList products= {products}/>
+   : loading 
+   ? <Loader/>
+   : <button onClick={handleAddProducts}>Save automatically characters in firebase</button>}
         
     
 

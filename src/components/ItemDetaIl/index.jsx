@@ -24,7 +24,7 @@ const ItemDetail = ({productsDetail}) => {
   }
   return (
     <div>
-      <img src={productsDetail.image}/>
+      <img src={productsDetail.image} alt="detail"/>
       <h1>{productsDetail.name}</h1>
       <button className='boton' > Agregar</button>
       <InputconError/>

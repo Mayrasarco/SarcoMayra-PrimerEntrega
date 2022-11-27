@@ -13,7 +13,7 @@ const ItemDetailContainer = () => {
   const [productsDetail, setproductsDetail] = useState(null)
     useEffect(() => {
       const getProductsDetail = async () =>{
-        const response = await fetch( `https://fakestoreapi.com/products/${id}`);
+        /*const response = await fetch( `https://fakestoreapi.com/products/${id}`);*/
        
         
 

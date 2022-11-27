@@ -16,7 +16,7 @@ const CardItem = ({item}) => {
         <img src= {item.image}  widht={200} alt='card'></img>
         <h1>{item.name}</h1>
         <p>{item.quantity}</p>
-        <div style = {{widht: 25}}>
+        <div style = {{widht: 25}} onClick={handleRemove}>
         <TrashCanIcon />
         </div>
        
