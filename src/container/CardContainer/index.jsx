@@ -2,7 +2,7 @@ import React from 'react'
 import { useContext } from 'react';
 import CardItem from '../../components/CardItem';
 import { Shop } from '../../contexts/Shop';
-import saveOrder from "../../Services/saveOrder"
+import { saveOrder }from "../../Services/saveOrder"
 
 const CartContainer = () => {
     const {products, calcularTotal} = useContext (Shop);
@@ -16,7 +16,7 @@ const CartContainer = () => {
             11111122222,
             "sebas@live.com",
             products,
-            calculateTotal()
+            calcularTotal()
 
 
         )

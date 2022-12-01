@@ -1,6 +1,6 @@
 import { addDoc, collection, doc, getDoc, updateDoc } from "firebase/firestore";
 import { db } from "../firebase/config";
-import generateOrderObject from "./generateOrderObject";
+import generateOrderObject from "../Services/GeneratorOrderObjets";
 
 export const saveOrder = async (nombreComprador, telefono, email, products, total) => {
     try {
