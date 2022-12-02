@@ -21,7 +21,7 @@ const NavBar = () => {
             <li ><Link to="/category/title">Title</Link></li>
             <li ><Link to="/category/category">Category</Link></li>
 
-            <select value= {themeColor} onChange= {handleChange}>
+            <select value= {themeColor} onChange= {handleChange} className = {themeColor === "dark" ? "theme-select-dark" : "theme-select"} >
             <option value= {'light'}>light</option>
             <option value={'dark'}>dark</option>
             </select>

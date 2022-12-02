@@ -3,11 +3,26 @@ import { useContext } from 'react';
 import CardItem from '../../components/CardItem';
 import { Shop } from '../../contexts/Shop';
 import { saveOrder }from "../../Services/saveOrder"
+import  Form  from "../../components/Form"
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const CartContainer = () => {
+  
+
     const {products, calcularTotal} = useContext (Shop);
 
     const confirmPurchase = () => {
+      toast('Compra realizada!', {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        });
       //Mostrar un formulario de compra, donde el usuario ingrese sus datos
       (async ()=> {
 
@@ -22,6 +37,7 @@ const CartContainer = () => {
         )
       })();
     };
+    
 
   
     
@@ -33,12 +49,18 @@ const CartContainer = () => {
        {products.map((product) =>{
         return <CardItem  key= {product.id} item= {product}/>
 
+
+
        }
         )} 
          <button  onClick={confirmPurchase}>Confirmar compra</button>
-
+         <Form/>
+         <ToastContainer />
     </div>
   )
+
+  
+ 
 }
 
 export default CartContainer;

@@ -1,9 +1,10 @@
 import React,{ useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import ItemDetail from '../../components/ItemDetaIl';
-import { PropagateLoader } from 'react-spinners';
+import Loader from '../../components/Loader';
 import { doc, getDoc} from "firebase/firestore";
-import { db } from '..//..//firebase/config';
+import { db } from '../../firebase/config';
+
 
 
 
@@ -13,10 +14,8 @@ const ItemDetailContainer = () => {
   const [productsDetail, setproductsDetail] = useState(null)
     useEffect(() => {
       const getProductsDetail = async () =>{
-        /*const response = await fetch( `https://fakestoreapi.com/products/${id}`);*/
-       
         
-
+      
         const docRef = doc(db, "products", id);
         const docSnap = await getDoc(docRef);
         
@@ -28,15 +27,14 @@ const ItemDetailContainer = () => {
           console.log("No such document!");
         }
 
-      /*  const productsDetail = await response.json();
-       setproductsDetail (productsDetail);*/
+     
 
       }
 
       getProductsDetail();
 
     }, [id])
-  return (productsDetail ? <ItemDetail productsDetail={productsDetail} /> : <PropagateLoader/>)
+  return (productsDetail ? <ItemDetail productsDetail={productsDetail} /> : <Loader/>)
 };
 
 export default ItemDetailContainer;

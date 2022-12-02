@@ -16,7 +16,7 @@ const useFirebase = (categoryId) => {
                 let q;
                 if (categoryId) {
                     const categoryCapitalized = capitalizeFirstLetter(categoryId);
-                    q = query(collection(db, "products"), where("species", "==", categoryCapitalized))
+                    q = query(collection(db, "products"), where("category", "==", categoryCapitalized))
                 } else {
                     q = query(collection(db, "products"));
                 }

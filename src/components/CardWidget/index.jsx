@@ -3,7 +3,6 @@ import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { Shop } from "../../contexts/Shop";
 import CardIcon from "../CardIcon";
-
 import "./styles.css";
 
 
@@ -13,12 +12,12 @@ const CardWidget = () => {
     const {totalItemsCart} = useContext (Shop);
 
     
- return <div 
+ return (
+ <div 
  style= {{
-    width: 25,
-    height: 25,
+    width: "5rem",
     display: "flex",
-    flexDirection: "row",
+    flexDirection: "end",
 }}
 onClick ={()=> navigate("/cart")}
 >
@@ -27,6 +26,8 @@ onClick ={()=> navigate("/cart")}
    <CardIcon/>
    <span>{totalItemsCart() === 0 ? null : `(${totalItemsCart()})`}</span>
 </div>
+ );
+
  
 }
 
