@@ -5,3 +5,8 @@
     border-radius: 8px;
 
 }
+
+img{
+    width: 18rem;
+    flex-direction: column;
+}
