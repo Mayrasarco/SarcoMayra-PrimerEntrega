@@ -9,7 +9,7 @@ const ItemCount = ({onAdd, stock,initial}) => {
     const {themeColor} = useContext(Theme)
 
     const onPlus = ()=> {
-        if (count < stock) setCount (count +1)
+        if (count < stock) setCount (count + 1)
     }
     const onDecrement = ()=>{
        if( count > initial) setCount (count - 1)
