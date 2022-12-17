@@ -7,11 +7,11 @@ import { Shop } from '../../contexts/Shop';
 import { Theme } from "../../contexts/Theme"
 
 
+
 const ItemDetail = ({productsDetail}) => {
   const {addProduct} = useContext(Shop);
   const {themeColor} = useContext(Theme)
   const[quantityItemDetail, setQuantityItemDetail] = useState(0);
-
   const navigate = useNavigate();
 
   const confirmPurchase = (quantity)=> {

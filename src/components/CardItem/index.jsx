@@ -1,7 +1,7 @@
 import React from 'react';
 import { useContext } from 'react';
 import { Shop } from '../../contexts/Shop';
-import TrashCanIcon from '../TrashCanIcon';
+
 
 const CardItem = ({item}) => {
 
@@ -16,9 +16,9 @@ const CardItem = ({item}) => {
         <img src= {item.image}  widht={200} alt='card'></img>
         <h1>{item.name}</h1>
         <p>{item.quantity}</p>
-        <div style = {{widht: 25}} onClick={handleRemove}>
-        <TrashCanIcon />
-        </div>
+        
+        <button style = {{height: 2.5}} onClick={handleRemove} >x</button>
+        
        
     </div>
   )

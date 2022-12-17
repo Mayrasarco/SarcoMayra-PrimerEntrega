@@ -11,7 +11,7 @@ const onRegister =(event)=>{
 return <form onSubmit={onRegister}>
     <input name='email' placeholder='Email'></input>
     <input name='password'placeholder='Password'></input>
-    <button>Register</button>
+    <button type="submit">Register</button>
 </form>
 
 } 
