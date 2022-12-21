@@ -1,5 +1,6 @@
 import React from 'react'
 import { useContext } from 'react';
+import { useState } from 'react';
 import CardItem from '../../components/CardItem';
 import { Shop } from '../../contexts/Shop';
 import { saveOrder }from "../../Services/saveOrder"
@@ -11,8 +12,10 @@ const CartContainer = () => {
   
 
     const {products, calcularTotal} = useContext (Shop);
+    const [condition, setCondition] = useState(false)
 
     const confirmPurchase = () => {
+      setCondition(!condition)
       toast('Compra realizada!', {
         position: "top-right",
         autoClose: 3000,
@@ -54,7 +57,7 @@ const CartContainer = () => {
        }
         )} 
          <button  onClick={confirmPurchase}>Confirmar compra</button>
-         <Form/>
+         <Form condition={condition}/>
          <ToastContainer />
     </div>
   )
