@@ -8,7 +8,7 @@ import  Form  from "../../components/Form"
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const CartContainer = () => {
+const CardContainer = () => {
   
 
     const {products, calcularTotal} = useContext (Shop);
@@ -66,4 +66,4 @@ const CartContainer = () => {
  
 }
 
-export default CartContainer;
+export default CardContainer;
