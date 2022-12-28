@@ -16,16 +16,7 @@ const CardContainer = () => {
 
     const confirmPurchase = () => {
       setCondition(!condition)
-      toast('Compra realizada!', {
-        position: "top-right",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-        });
+      
       //Mostrar un formulario de compra, donde el usuario ingrese sus datos
       (async ()=> {
 

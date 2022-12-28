@@ -9,30 +9,29 @@ import useFirebase from "../../Hooks/useFirebase";
 
 
 
-export default function ItemListContainer ({}){
 
+export default function ItemListContainer({ }) {
 
-  const { categoryId}  = useParams();
-  const [data, error, loading] = useFirebase (categoryId)
+  const { categoryId } = useParams();
+  const [data, error, loading] = useFirebase()
 
- 
-   
-
-   
-   return(
-    <>
-       
-
-   {(data.length && !loading &&! error)
-   ? <ItemList products= {data}/>
-   : error 
-   ? <h1> {error}</h1>
-   :loading
-   ? <Loader/>
-   : null
-        
   
-    }
+
+
+  return (
+    <>
+      
+
+      {(data.length && !loading && !error)
+        ? <ItemList products={data} />
+        : error
+          ? <h1> {error}</h1>
+          : loading
+            ? <Loader />
+            : null
+
+
+      }
     </>
-   );
+  );
 }
